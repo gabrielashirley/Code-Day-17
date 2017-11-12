@@ -231,7 +231,7 @@ function showWindow() {
       nationalAnthem = "idanthem.mp3";
       language = "Bahasa Indonesia";
       currency = "Rupiah";
-      currencyImage = " https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjX17Cq1LjXAhXIq1QKHefVCwkQjRwIBw&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FIndonesian_rupiah&psig=AOvVaw24IyzvDbzKdcJIkDkQAAb_&ust=1510563120633958";
+      currencyImage = " https://upload.wikimedia.org/wikipedia/commons/3/30/Indonesian_Rupiah_%28IDR%29_banknotes.png";
       recentNews = "Indonesia's first daughter in a lavish javanese wedding ";
       recentNewsLink = "http://www.bbc.com/news/world-asia-41910823?intlink_from_url=http://www.bbc.com/news/topics/4aa966f9-091e-4dd1-8f10-a44ca20aec5d/indonesia&link_location=live-reporting-gallery";
       funFact = "New orangutan species discovered ";
@@ -271,13 +271,13 @@ function showWindow() {
     }
     else {
         content = "<p class ='countryName' >" + countryName + "</p>" +
-
+        content = "<p class ='countryName' ><b>" + countryName + "</b></p>" +  //<b> and </b> makes it bold
                     "<img class = 'flags' src= '" + flag + "'>" +
                     "<p class = 'language' >Language: " + language + "</p>" +
                     "<p class = 'currency' > " + countryName + " Currency: " + currency + "</p> " +
                     " <img class = 'money' src= ' " +currencyImage + "'> "+
-                    "Recent news: <a href='" + recentNewsLink + "' + class = 'recentNews' > " + recentNews + "</a> " +
-                    "<p class = 'funFact' > " + funFact + " </p>";
+                    "Recent News: <a href='" + recentNewsLink + "' + class = 'recentNews' > " + recentNews + "</a> " +
+                    "<br><br>Fun Fact: <p class = 'funFact' > " + funFact + " </p>";
     }
 
 
