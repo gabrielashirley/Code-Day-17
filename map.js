@@ -201,11 +201,13 @@ function showWindow() {
 
     var flag; // This is image url.
     var language;
-    var nationalAnthem;
+    var nationalAnthem; // This is image url.
     var currency;
+    var currencyImage; // This is image url.
     var recentNews;
-    var recentNewsLink;
+    var recentNewsLink; // This is image url.
     var funFact;
+    var isNotAvailable; // bool
 
     // TODO: Make your own switch. Output info on each switch case.
     switch (countryName)
@@ -215,7 +217,7 @@ function showWindow() {
       language = "Dari and Pashto";
       nationalAnthem = "afanthem.mp3";
       currency = "Afghani";
-
+      currencyImage = "http://theafghanistanexpress.com/wp-content/uploads/2013/04/Afghan-afghani-notes.jpg ";
       recentNews = "Afghan Girls' Robotics Team Warmly Welcomed In Holland ";
       recentNewsLink = "http://www.tolonews.com/science-technology/afghan-girls%E2%80%99-robotics-team-warmly-welcomed-holland";
       funFact = " Afghanistan's national games are 'buzkashi' or goat-grabbing. Afghanistan would like buzkashi, or goat-grabbing, to be an Olympic sport.";
@@ -226,9 +228,10 @@ function showWindow() {
       nationalAnthem = "idanthem.mp3";
       language = "Bahasa Indonesia";
       currency = "Rupiah";
+      currencyImage = "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjX17Cq1LjXAhXIq1QKHefVCwkQjRwIBw&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FIndonesian_rupiah&psig=AOvVaw24IyzvDbzKdcJIkDkQAAb_&ust=1510563120633958";
       recentNews = "Indonesia's first daughter in a lavish javanese wedding ";
       recentNewsLink = "http://www.bbc.com/news/world-asia-41910823?intlink_from_url=http://www.bbc.com/news/topics/4aa966f9-091e-4dd1-8f10-a44ca20aec5d/indonesia&link_location=live-reporting-gallery";
-      funFact = "New orangutan species discovered = > http://www.bbc.com/news/av/world-41852851/new-orangutan-species-discovered-in-indonesia?intlink_from_url=http%3A%2F%2Fwww.bbc.com%2Fnews%2Ftopics%2F4aa966f9-091e-4dd1-8f10-a44ca20aec5d%2Findonesia&link_location=live-reporting-map";
+      funFact = "New orangutan species discovered ";
       break;
 
 
@@ -237,19 +240,14 @@ function showWindow() {
       nationalAnthem = "pyanthem.mp3";
       language = "Paraguay Guarani and Spanish";
       currency = "Paraguay Guarani";
+      currencyImage = "http://www.voyagerinfo.com/sites/default/files/users/15/paraguaymoney.jpg";
       recentNews = "Arentina, Uruguay and Paraguay launch bid to host the 2030 World Cup ";
       recentNewsLink = "http://en.mercopress.com/2017/10/05/argentina-uruguay-and-paraguay-launch-bid-to-host-the-2030-world-cup";
       funFact = "In Paraguay, pistol duelling is still legal as long as both parties are registered blood donors.";
       break;
 
       default:
-      flag=" ";
-      nationalAnthem = " ";
-      language = " ";
-      currency = " ";
-      recentNews = " ";
-      recentNewsLink = " ";
-      funFact = " ";
+      isNotAvailable = true;
 
     }
     // var langUrl = "https://restcountries.eu/rest/v2/name/" + countryName;
@@ -263,13 +261,21 @@ function showWindow() {
     //   setTimeout(playSound, 3000);
     // });
 
-    var content = "<p class ='countryName' >" + countryName + "</p>" +
-                  "<img class = 'flags' src= '" + flag + "'>" +
-                  "<p class = 'language' >Language: " +language+ "</p>" +
-                  "<p class = 'currency' >Currency: " + currency+ "</p> " +
-                  "<img class = 'money' src= 'http://theafghanistanexpress.com/wp-content/uploads/2013/04/Afghan-afghani-notes.jpg'> "+
-                  "<p class = 'recentNews' > " + recentNews + "</p> " +
-                  "<p class = 'funFact' > " + funFact + " </p>";
+    var content;
+    if (isNotAvailable)
+    {
+      content = "<p class ='countryName' >" + countryName + "</p>";
+    }
+    else {
+        content = "<p class ='countryName' >" + countryName + "</p>" +
+                    "<img class = 'flags' src= '" + flag + "'>" +
+                    "<p class = 'language' >Language: " + language + "</p>" +
+                    "<p class = 'currency' > " + countryName + " Currency: " + currency + "</p> " +
+                    " <img class = 'money' src= ' " +currencyImage + "'> "+
+                    "Recent news: <a href='" + recentNewsLink + "' + class = 'recentNews' > " + recentNews + "</a> " +
+                    "<p class = 'funFact' > " + funFact + " </p>";
+    }
+
 
 
     infoWindow.setContent(content);
