@@ -22,6 +22,8 @@ var langData;           // Translated strings from all languages.
 var langInput;          // The language that the user input.
 var langHover;          // The language that the user hover to.
 
+var countryName;
+
 // Start website by hiding stuffs.
 // loadingIcon.hide();
 
@@ -84,7 +86,7 @@ function drawMap(data) {
         strokeColor: '#000000',
         strokeOpacity: 0.1,
         strokeWeight: 1,
-        fillColor: '#FCF80D',
+        fillColor: '#F75B3C',
         fillOpacity: 0
       });
 
@@ -200,7 +202,7 @@ function showWindow() {
   console.log(geoUrl);
   $.getJSON(geoUrl, function (data) {
     // TODO: Important variable.
-    var countryName = getCountry(data.results[0].address_components);
+    countryName = getCountry(data.results[0].address_components);
 
     var flag; // This is image url.
     var language;
@@ -279,7 +281,8 @@ function showWindow() {
                     "<p class = 'funFact' > " + funFact + " </p>";
     }
 
-
+    var audio = new Audio(nationalAnthem);
+    audio.play();
 
     infoWindow.setContent(content);
     infoWindow.setPosition(coordGM);
