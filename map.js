@@ -22,6 +22,8 @@ var langData;           // Translated strings from all languages.
 var langInput;          // The language that the user input.
 var langHover;          // The language that the user hover to.
 
+var audio;
+
 // Start website by hiding stuffs.
 // loadingIcon.hide();
 
@@ -276,13 +278,20 @@ function showWindow() {
     //   setTimeout(playSound, 3000);
     // });
 
+    if (audio != null)
+    {
+      audio.pause();
+audio.currentTime = 0;
+    }
+    audio = new Audio(nationalAnthem);
+    audio.play();
+
     var content;
     if (isNotAvailable)
     {
       content = "<p class ='countryName' >" + countryName + "</p>";
     }
     else {
-        content = "<p class ='countryName' >" + countryName + "</p>" +
         content = "<p class ='countryName' ><b>" + countryName + "</b></p>" +  //<b> and </b> makes it bold
                     "<img class = 'flags' src= '" + flag + "'>" +
                     "<p class = 'language' >Language: " + language + "</p>" +
