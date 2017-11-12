@@ -251,6 +251,18 @@ function showWindow() {
       funFact = "In Paraguay, pistol duelling is still legal as long as both parties are registered blood donors.";
       break;
 
+      case "United States":
+      flag = "https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png";
+      nationalAnthem = "usanthem.mp3";
+      language = "English";
+      currency = "US Dollars";
+      currencyImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/USDnotes.png/252px-USDnotes.png";
+      recentNews = " Trump Talks up Better Relations With Russia ";
+      recentNewsLink = "https://www.usnews.com/news/politics/articles/2017-11-11/the-latest-trump-and-putin-cross-paths-again-in-vietnam";
+      funFact = "According to the World Giving Index, Americans are the most likely people in the world to help a stranger.";
+      break;
+
+
       default:
       isNotAvailable = true;
 
