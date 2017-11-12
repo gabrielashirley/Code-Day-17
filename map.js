@@ -44,24 +44,24 @@ function initMap() {
   //   styledMapType = new google.maps.StyledMapType(data);
   //   map.mapTypes.set('styled_map', styledMapType);
   //   map.setMapTypeId('styled_map');
-});
+  //});
 
-// Create a changeable info window.
-createWindow();
+  // Create a changeable info window.
+  createWindow();
 
-// Request fusion table for countries data.
-var script = document.createElement('script');
-var url = ['https://www.googleapis.com/fusiontables/v2/query?'];
-url.push('sql=');
-var query = 'SELECT name, kml_4326 FROM ' +
-'1foc3xO9DyfSIF6ofvN0kp2bxSfSeKog5FbdWdQ';
-var encodedQuery = encodeURIComponent(query);
-url.push(encodedQuery);
-url.push('&callback=drawMap');  // Callback to drawMap().
-url.push('&key=AIzaSyAm9yWCV7JPCTHCJut8whOjARd7pwROFDQ');
-script.src = url.join('');
-var body = document.getElementsByTagName('body')[0];
-body.appendChild(script);
+  // Request fusion table for countries data.
+  var script = document.createElement('script');
+  var url = ['https://www.googleapis.com/fusiontables/v2/query?'];
+  url.push('sql=');
+  var query = 'SELECT name, kml_4326 FROM ' +
+  '1foc3xO9DyfSIF6ofvN0kp2bxSfSeKog5FbdWdQ';
+  var encodedQuery = encodeURIComponent(query);
+  url.push(encodedQuery);
+  url.push('&callback=drawMap');  // Callback to drawMap().
+  url.push('&key=AIzaSyAm9yWCV7JPCTHCJut8whOjARd7pwROFDQ');
+  script.src = url.join('');
+  var body = document.getElementsByTagName('body')[0];
+  body.appendChild(script);
 }
 
 // Draw countries on map.
@@ -193,70 +193,90 @@ function createWindow() {
 // Show window at a certain position.
 // TODO: Change this function.
 function showWindow() {
-  if (isInput)
-  {
-    var geoUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + coordJS.lat + "," + coordJS.lng + "&key=AIzaSyAvm9iztqVSlyrr8ePE1NmPsLlLN8VSe7Q";
-    $.getJSON(geoUrl, function (data) {
-      // TODO: Important variable.
-      var countryName = getCountry(data.results[0].address_components);
+  var geoUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + coordJS.lat + "," + coordJS.lng + "&key=AIzaSyC4M03tlCkOASz4YWhYvFJdQDvN-gnxs0s";
+  console.log(geoUrl);
+  $.getJSON(geoUrl, function (data) {
+    // TODO: Important variable.
+    var countryName = getCountry(data.results[0].address_components);
 
-      var content;
-      var flag; // This is image url.
-      var language;
-      var nationalAnthem;
-      var currency;
-      var recentNews;
-      var recentNewsLink;
-      var funFact;
+    var flag; // This is image url.
+    var language;
+    var nationalAnthem;
+    var currency;
+    var recentNews;
+    var recentNewsLink;
+    var funFact;
 
-      // TODO: Make your own switch. Output info on each switch case.
-      switch (countryName)
-      {
-        case "Afghanistan":
-        flag = "http://flags.fmcdn.net/data/flags/w1160/af.png";
-        language = "Dari and Pashto";
-        nationalAnthem = "afanthem.mp3";
-        currency = "Afghani";
-        recentNews = "Afghan Girls' Robotics Team Warmly Welcomed In Holland ";
-        recentNewsLink = "http://www.tolonews.com/science-technology/afghan-girls%E2%80%99-robotics-team-warmly-welcomed-holland";
-        funFact = " Afghanistan's national games are 'buzkashi' or goat-grabbing. Afghanistan would like buzkashi, or goat-grabbing, to be an Olympic sport."
-        break;
+    // TODO: Make your own switch. Output info on each switch case.
+    switch (countryName)
+    {
+      case "Afghanistan":
+      flag = "http://flags.fmcdn.net/data/flags/w1160/af.png";
+      language = "Dari and Pashto";
+      nationalAnthem = "afanthem.mp3";
+      currency = "Afghani";
 
-        case "Indonesia":
-        flag = "http://flags.fmcdn.net/data/flags/w1160/id.png";
-        nationalAnthem = "idanthem.mp3"
-        language = "Bahasa Indonesia";
-        currency = "Rupiah";
-        recentNews = "Afghan Girls' Robotics Team Warmly Welcomed In Holland ";
-        recentNewsLink = "http://www.tolonews.com/science-technology/afghan-girls%E2%80%99-robotics-team-warmly-welcomed-holland";
-        funFact =
+      recentNews = "Afghan Girls' Robotics Team Warmly Welcomed In Holland ";
+      recentNewsLink = "http://www.tolonews.com/science-technology/afghan-girls%E2%80%99-robotics-team-warmly-welcomed-holland";
+      funFact = " Afghanistan's national games are 'buzkashi' or goat-grabbing. Afghanistan would like buzkashi, or goat-grabbing, to be an Olympic sport.";
+      break;
+
+      case "Indonesia":
+      flag = "http://flags.fmcdn.net/data/flags/w1160/id.png";
+      nationalAnthem = "idanthem.mp3";
+      language = "Bahasa Indonesia";
+      currency = "Rupiah";
+      recentNews = "Indonesia's first daughter in a lavish javanese wedding ";
+      recentNewsLink = "http://www.bbc.com/news/world-asia-41910823?intlink_from_url=http://www.bbc.com/news/topics/4aa966f9-091e-4dd1-8f10-a44ca20aec5d/indonesia&link_location=live-reporting-gallery";
+      funFact = "New orangutan species discovered = > http://www.bbc.com/news/av/world-41852851/new-orangutan-species-discovered-in-indonesia?intlink_from_url=http%3A%2F%2Fwww.bbc.com%2Fnews%2Ftopics%2F4aa966f9-091e-4dd1-8f10-a44ca20aec5d%2Findonesia&link_location=live-reporting-map";
+      break;
 
 
+      case "Paraguay":
+      flag = "http://flags.fmcdn.net/data/flags/w1160/py.png";
+      nationalAnthem = "pyanthem.mp3";
+      language = "Paraguay Guarani and Spanish";
+      currency = "Paraguay Guarani";
+      recentNews = "Arentina, Uruguay and Paraguay launch bid to host the 2030 World Cup ";
+      recentNewsLink = "http://en.mercopress.com/2017/10/05/argentina-uruguay-and-paraguay-launch-bid-to-host-the-2030-world-cup";
+      funFact = "In Paraguay, pistol duelling is still legal as long as both parties are registered blood donors.";
+      break;
 
-        case "Paraguay":
-        flag = "http://flags.fmcdn.net/data/flags/w1160/py.png";
-        nationalAnthem = "pyanthem.mp3";
-        language = "Spanish and Paraguay Guarani"
-        currency = "Rupiah";
-        recentNews = "Afghan Girls' Robotics Team Warmly Welcomed In Holland ";
-        recentNewsLink = "http://www.tolonews.com/science-technology/afghan-girls%E2%80%99-robotics-team-warmly-welcomed-holland";
-        funFact = "";
+      default:
+      flag=" ";
+      nationalAnthem = " ";
+      language = " ";
+      currency = " ";
+      recentNews = " ";
+      recentNewsLink = " ";
+      funFact = " ";
 
-      }
-      // var langUrl = "https://restcountries.eu/rest/v2/name/" + countryName;
-      // $.getJSON(langUrl, function (data1) {
-      //   langHover = data1[0].languages[0].iso639_1;
-      //   var translated = translate(countryName, langHover);
-      //
-      //   infoWindow.setContent(translated);
-      //   infoWindow.setPosition(coordGM);
-      //   infoWindow.open(map);
-      //   setTimeout(playSound, 3000);
-      // });
+    }
+    // var langUrl = "https://restcountries.eu/rest/v2/name/" + countryName;
+    // $.getJSON(langUrl, function (data1) {
+    //   langHover = data1[0].languages[0].iso639_1;
+    //   var translated = translate(countryName, langHover);
+    //
+    //   infoWindow.setContent(translated);
+    //   infoWindow.setPosition(coordGM);
+    //   infoWindow.open(map);
+    //   setTimeout(playSound, 3000);
+    // });
 
-      infoWindow.setContent(content);
-    });
-  }
+    var content = "<p class ='countryName' >" + countryName + "</p>" +
+                  "<img class = 'flags' src= '" + flag + "'>" +
+                  "<p class = 'language' >Language: " +language+ "</p>" +
+                  "<p class = 'currency' >Currency: " + currency+ "</p> " +
+                  "<img class = 'money' src= 'http://theafghanistanexpress.com/wp-content/uploads/2013/04/Afghan-afghani-notes.jpg'> "+
+                  "<p class = 'recentNews' > " + recentNews + "</p> " +
+                  "<p class = 'funFact' > " + funFact + " </p>";
+
+
+    infoWindow.setContent(content);
+    infoWindow.setPosition(coordGM);
+    infoWindow.open(map);
+  });
+
 }
 
 // Get country name from Geocode API.
@@ -303,9 +323,6 @@ function translate(countryName, langTrans) {
 
 // Hide window when hover out.
 function hideWindow() {
-  if (isInput)
-  {
-    infoWindow.setContent('');
-    infoWindow.close();
-  }
+  infoWindow.setContent('');
+  infoWindow.close();
 }
