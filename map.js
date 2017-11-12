@@ -40,11 +40,11 @@ function initMap() {
   });
 
   // // Style the map.
-  // $.getJSON("js/mapstyle.json", function(data) {
-  //   styledMapType = new google.maps.StyledMapType(data);
-  //   map.mapTypes.set('styled_map', styledMapType);
-  //   map.setMapTypeId('styled_map');
-  //});
+  $.getJSON("mapstyle.json", function(data) {
+    styledMapType = new google.maps.StyledMapType(data);
+    map.mapTypes.set('styled_map', styledMapType);
+    map.setMapTypeId('styled_map');
+  });
 
   // Create a changeable info window.
   createWindow();
@@ -84,24 +84,27 @@ function drawMap(data) {
         strokeColor: '#000000',
         strokeOpacity: 0.1,
         strokeWeight: 1,
-        fillColor: '#00FF00',
+        fillColor: '#FCF80D',
         fillOpacity: 0
       });
 
       // Country hover event.
       google.maps.event.addListener(country, 'mouseover', function(event) {
-        getCoordinates(event.latLng);
-        showWindow();
-        this.setOptions({fillOpacity: 0.25});
+        //getCoordinates(event.latLng);
+        //showWindow();
+        this.setOptions({fillOpacity: 0.25}); //changes color of the countries
 
       });
 
       // TODO: Add code for mouse click.
-
+      google.maps.event.addListener(country, 'click', function(event) {
+        getCoordinates(event.latLng);
+        showWindow();
+      });
 
       // Country hover out event.
       google.maps.event.addListener(country, 'mouseout', function() {
-        hideWindow();
+        //hideWindow();
         this.setOptions({fillOpacity: 0});
       });
 
@@ -228,7 +231,7 @@ function showWindow() {
       nationalAnthem = "idanthem.mp3";
       language = "Bahasa Indonesia";
       currency = "Rupiah";
-      currencyImage = "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjX17Cq1LjXAhXIq1QKHefVCwkQjRwIBw&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FIndonesian_rupiah&psig=AOvVaw24IyzvDbzKdcJIkDkQAAb_&ust=1510563120633958";
+      currencyImage = " https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjX17Cq1LjXAhXIq1QKHefVCwkQjRwIBw&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FIndonesian_rupiah&psig=AOvVaw24IyzvDbzKdcJIkDkQAAb_&ust=1510563120633958";
       recentNews = "Indonesia's first daughter in a lavish javanese wedding ";
       recentNewsLink = "http://www.bbc.com/news/world-asia-41910823?intlink_from_url=http://www.bbc.com/news/topics/4aa966f9-091e-4dd1-8f10-a44ca20aec5d/indonesia&link_location=live-reporting-gallery";
       funFact = "New orangutan species discovered ";
